@@ -6,10 +6,10 @@ services:
   catalog-service:
     depends_on:
       - polar-postgres
-    image: "catalog-service"
+    image: catalog-service:latest
     container_name: "catalog-service"
     ports:
-      - 9001:9001
+      - 9011:9001
       - 8001:8001
     environment:
       # Buildpacks environment variable to configure the number of threads in memory calculation
@@ -22,7 +22,7 @@ services:
       - SPRING_PROFILES_ACTIVE=testdata
   
   config-service:
-    image: "config-service"
+    image: config-service:latest
     container_name: "config-service"
     ports:
       - 8888:8888
@@ -40,7 +40,7 @@ services:
     image: "postgres:14.12"
     container_name: "polar-postgres"
     ports:
-      - 5432:5432
+      - 5438:5432
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
